@@ -53,9 +53,7 @@ export default function Filters({
         <div key={filter.label}>
           <div className="space-y-3">
             <div className="flex justify-between items-center border-b border-gray-100 pb-2">
-              <h3 className="text-md font-medium text-gray-700 capitalize">
-                {filter.label}
-              </h3>
+              <h3 className="text-md font-medium capitalize">{filter.label}</h3>
             </div>
             <div className="space-y-2">
               {filter.options.map((option) => (
@@ -71,10 +69,7 @@ export default function Filters({
                     }
                     className="mr-2 rounded border-gray-300"
                   />
-                  <span className="text-sm text-gray-600 overflow-hidden text-ellipsis whitespace-nowrap">
-                    {option}
-                  </span>
-                  <span className="ml-2 text-xs bg-gray-100 text-gray-600 px-2 rounded-full">
+                  <span className="text-sm overflow-hidden text-ellipsis whitespace-nowrap">
                     {option}
                   </span>
                 </label>

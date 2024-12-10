@@ -48,36 +48,57 @@ export default function Filters({
   };
 
   return (
-    <div>
-      {filterOptions.map((filter) => (
-        <div key={filter.label}>
-          <div className="space-y-3">
-            <div className="flex justify-between items-center border-b border-gray-100 pb-2">
-              <h3 className="text-md font-medium capitalize">{filter.label}</h3>
-            </div>
-            <div className="space-y-2">
-              {filter.options.map((option) => (
-                <label
-                  key={option}
-                  className="flex items-center cursor-pointer"
-                >
-                  <input
-                    type="checkbox"
-                    checked={isValueSelected(filter.label, option)}
-                    onChange={(e) =>
-                      handleFilterChange(filter.label, option, e.target.checked)
-                    }
-                    className="mr-2 rounded border-gray-300"
-                  />
-                  <span className="text-sm overflow-hidden text-ellipsis whitespace-nowrap">
-                    {option}
-                  </span>
-                </label>
-              ))}
+    <div className="flex flex-col gap-4">
+      <div>
+        <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+          <h3 className="text-md font-medium capitalize">
+            queryStates Definition
+          </h3>
+        </div>
+        {Object.keys(queryStates).map((key) => (
+          <div key={key}>
+            <h3 className="text-md font-medium capitalize">{key}</h3>
+            <p>{JSON.stringify(queryStates[key])}</p>
+          </div>
+        ))}
+      </div>
+      <div className="flex flex-col gap-4">
+        {filterOptions.map((filter) => (
+          <div key={filter.label}>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                <h3 className="text-md font-medium capitalize">
+                  {filter.label}
+                </h3>
+              </div>
+              <div className="space-y-2">
+                {filter.options.map((option) => (
+                  <label
+                    key={option}
+                    className="flex items-center cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={isValueSelected(filter.label, option)}
+                      onChange={(e) =>
+                        handleFilterChange(
+                          filter.label,
+                          option,
+                          e.target.checked
+                        )
+                      }
+                      className="mr-2 rounded border-gray-300"
+                    />
+                    <span className="text-sm overflow-hidden text-ellipsis whitespace-nowrap">
+                      {option}
+                    </span>
+                  </label>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
